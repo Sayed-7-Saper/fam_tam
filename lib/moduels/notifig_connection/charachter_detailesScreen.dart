@@ -24,7 +24,8 @@ class _characterDetailesState extends State<characterDetailes> {
       stretch: true,
       pinned: true,
       flexibleSpace: FlexibleSpaceBar(
-        title:Text('${character.nicKName}',style: TextStyle(fontSize: 19.0,fontWeight: FontWeight.bold,color: Colors.white70),),
+        title:Text('${character.nicKName}',
+          style: TextStyle(fontSize: 19.0,fontWeight: FontWeight.bold,color: Colors.white70),),
         background: Hero(
           tag: character.charId,
           child: Image.network(character.image,fit: BoxFit.cover,),

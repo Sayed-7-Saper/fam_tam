@@ -1,7 +1,9 @@
 import 'package:fam_tam/model/notifcation_model/character_cubit.dart';
 import 'package:fam_tam/model/notifcation_model/character_model.dart';
 import 'package:fam_tam/model/notifcation_model/character_state.dart';
-import 'package:fam_tam/moduels/charachter_detailesScreen.dart';
+import 'package:fam_tam/moduels/notifig_connection/charachter_detailesScreen.dart';
+import 'package:fam_tam/moduels/notifig_connection/upload_image_page.dart';
+import 'package:fam_tam/share/compontent/compontents.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:fam_tam/layout/cubit/states.dart';
@@ -40,7 +42,7 @@ class NotificationScreen extends StatelessWidget {
               Text("I Can\'t Loading Check NetWork ",
                 style: TextStyle(fontSize: 25.0,fontWeight: FontWeight.bold,color: Colors.red),),
               SizedBox(height: 15.0,),
-              Image.asset('image/loseNet.png'),
+              Image.asset('assets/image/loseNet.png'),
             ],
           ),
       ),
@@ -105,6 +107,14 @@ class NotificationScreen extends StatelessWidget {
         ),
 
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          navigateToPage(context ,UploadDataForLosePerson(), );
+          print("Notification page");
+        },
+        child: Icon(Icons.add_to_photos_rounded),
+      ),
+
     );
   }
 }
@@ -136,9 +146,9 @@ class CharacterItem extends StatelessWidget {
               child: character.image.isNotEmpty?FadeInImage.assetNetwork(
                 width: double.infinity,
                 height: double.infinity,
-                placeholder:'image/loding.gif',
+                placeholder:'assets/image/loding.gif',
                 image: character.image,
-                fit: BoxFit.cover,): Image.asset('image/V1.png'),
+                fit: BoxFit.cover,): Image.asset('assets/image/V1.png'),
             ),
           ),
           footer: Container(

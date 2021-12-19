@@ -5,13 +5,14 @@ import 'package:fam_tam/model/notifcation_model/cashHelper_repositry.dart';
 import 'package:fam_tam/model/notifcation_model/character_cubit.dart';
 import 'package:fam_tam/model/notifcation_model/dioHelper_webServes.dart';
 import 'package:fam_tam/moduels/login/login_screen.dart';
+import 'package:fam_tam/moduels/presentation_app/wellcom_screen.dart';
 import 'package:fam_tam/share/blocObserver.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   // to insure to loading all data and start app its import besose main is async
-  //WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   // used  bloc to  keep state screen  and tranport between layout
   Bloc.observer = MyBlocObserver();
   runApp(MyApp());
@@ -49,7 +50,8 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: LoginScreen(),
+        home: WelcomeScreen(),
+        //LoginScreen(),
         //LayoutPage(),
       ),
     );

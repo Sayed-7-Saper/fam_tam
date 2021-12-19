@@ -1,10 +1,10 @@
 
 import 'package:fam_tam/layout/cubit/states.dart';
-import 'package:fam_tam/moduels/calling_screen.dart';
-import 'package:fam_tam/moduels/chats_screen.dart';
-import 'package:fam_tam/moduels/home_data_screen.dart';
-import 'package:fam_tam/moduels/notification_screen.dart';
-import 'package:fam_tam/moduels/status_screen.dart';
+import 'package:fam_tam/moduels/call_connection/calling_screen.dart';
+import 'package:fam_tam/moduels/chat_connection/chats_screen.dart';
+import 'package:fam_tam/moduels/home_connection/home_data_screen.dart';
+import 'package:fam_tam/moduels/notifig_connection/notification_screen.dart';
+import 'package:fam_tam/moduels/story_connection/status_screen.dart';
 // import 'package:fam_tam/share/compontent/compontents.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,70 +29,70 @@ static Appcubit get(context)=>BlocProvider.of(context);
     emit(ChangeBottomNavState());
   }
 
-IconData changeIcon(int x){
-    IconData logo;
-    switch (x){
-      case 0:
-        logo =Icons.settings;
-        break;
-      case 1:
-        logo =Icons.person_add_sharp;
-        break;
-      case 2:
-        logo =Icons.add_a_photo_rounded;
-        break;
-      case 3:
-        logo =Icons.add_to_photos_rounded;
-        break;
-      case 4:
-        logo =Icons.add_call;
-        break;
-
-    }
-    //emit(ChangeFloatBottomIcon());
-    return logo;
-
-}
-
-Function funcChangeOnprees(int y){
-    Function func;
-    switch (y){
-      case 0:
-        func=func1();
-        break;
-      case 1:
-        func=func2();
-        break;
-      case 2:
-        func=func3();
-        break;
-      case 3:
-        func=func4();
-        break;
-      case 4:
-        func=func5();
-        break;
-
-    }
-    //emit(ChangeFloatBottomOnpress());
-    return func;
-
-}
-func1(){
-    print('Setting');
-}
-  func2(){
-    print('Chats Preson');
-  }
-  func3(){
-    print('Status');
-  }
-  func4(){
-    print('Notification');
-  }
-  func5(){
-    print('Calling');
-  }
+// IconData changeIcon(int x){
+//     IconData logo;
+//     switch (x){
+//       case 0:
+//         logo =Icons.settings;
+//         break;
+//       case 1:
+//         logo =Icons.person_add_sharp;
+//         break;
+//       case 2:
+//         logo =Icons.add_a_photo_rounded;
+//         break;
+//       case 3:
+//         logo =Icons.add_to_photos_rounded;
+//         break;
+//       case 4:
+//         logo =Icons.add_call;
+//         break;
+//
+//     }
+//     //emit(ChangeFloatBottomIcon());
+//     return logo;
+//
+// }
+//
+// Function funcChangeOnprees(int y){
+//     Function func;
+//     switch (y){
+//       case 0:
+//         func=func1();
+//         break;
+//       case 1:
+//         func=func2();
+//         break;
+//       case 2:
+//         func=func3();
+//         break;
+//       case 3:
+//         func=func4();
+//         break;
+//       case 4:
+//         func=func5();
+//         break;
+//
+//     }
+//     //emit(ChangeFloatBottomOnpress());
+//     return func;
+//
+// }
+// func1(){
+//     print('Setting');
+// }
+//   func2(){
+//     print('Chats Preson');
+//   }
+//   func3(){
+//     print('Status');
+//   }
+//   func4(){
+//     print('Notification');
+//   }
+//   func5(){
+//     print('Calling');
+//   }
 
 //////////////////
 

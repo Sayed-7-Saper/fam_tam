@@ -32,7 +32,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      Image.asset('image/SS.jpg',height: 400,width: double.infinity,fit: BoxFit.cover,)
+                      Image.asset('assets/image/SS.jpg',height: 400,width: double.infinity,fit: BoxFit.cover,)
                     ],
                   ),
                 ),

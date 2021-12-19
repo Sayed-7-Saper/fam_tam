@@ -1,5 +1,5 @@
 
-import 'package:fam_tam/moduels/profile_screen.dart';
+import 'package:fam_tam/moduels/home_connection/profile_screen.dart';
 import 'package:fam_tam/share/compontent/compontents.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -94,11 +94,11 @@ class LayoutPage extends StatelessWidget {
              /* ],*/
             ),
             body: cubit.bottomScreens[cubit.currentIndex],
-            floatingActionButton: FloatingActionButton(
-              onPressed:(){ cubit.funcChangeOnprees(cubit.currentIndex);},
-              tooltip: 'Add Story',
-              child: Icon(cubit.changeIcon(cubit.currentIndex)),
-            ),
+            // floatingActionButton: FloatingActionButton(
+            //   onPressed:(){ cubit.funcChangeOnprees(cubit.currentIndex);},
+            //   tooltip: 'Add Story',
+            //   child: Icon(cubit.changeIcon(cubit.currentIndex)),
+            // ),
             bottomNavigationBar: BottomNavigationBar(
               currentIndex: cubit.currentIndex,
               onTap:(index) {
