@@ -1,3 +1,5 @@
+import 'package:fam_tam/moduels/profile_screen.dart';
+import 'package:fam_tam/share/compontent/compontents.dart';
 import 'package:flutter/material.dart';
 import 'package:fam_tam/layout/cubit/states.dart';
 import 'package:fam_tam/layout/cubit/cubit1.dart';
@@ -30,12 +32,13 @@ class HomeScreen extends StatelessWidget {
     return  BlocConsumer<Appcubit,AppStates>(
         listener: (context,state){},
         builder: (context,state){
-          return  Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                 /* Card(
+          return  Scaffold(
+            body: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    /* Card(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,47 +121,45 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),*/
 
-                  SizedBox(height: 15.0,),
-                  GridView.builder(
-                   shrinkWrap: true,
-                   physics: NeverScrollableScrollPhysics(),
-                   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 200,
-                    childAspectRatio: 3 / 2,
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 20),
-                   itemCount: MyProducts.length,
-                   itemBuilder: (BuildContext context, index) {
-                    return Container(
-                    alignment: Alignment.center,
-                    child: Column(
-                      children: [
-                        IconButton(icon:Icon( MyProducts[index].icon,size: 50.0,), onPressed: (){}),
-                        SizedBox(height: 30.0,),
-                        Text(MyProducts[index].text,style: TextStyle(fontSize: 15.0,fontFamily:'tahomal',fontWeight: FontWeight.bold ),),
-                      ],
+                    SizedBox(height: 15.0,),
+                    GridView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent: 200,
+                            childAspectRatio: 3 / 2,
+                            crossAxisSpacing: 20,
+                            mainAxisSpacing: 20),
+                        itemCount: MyProducts.length,
+                        itemBuilder: (BuildContext context, index) {
+                          return Container(
+                            alignment: Alignment.center,
+                            child: Column(
+                              children: [
+                                IconButton(icon:Icon( MyProducts[index].icon,size: 50.0,), onPressed: (){}),
+                                SizedBox(height: 30.0,),
+                                Text(MyProducts[index].text,
+                                  style: TextStyle(fontSize: 13.0,fontWeight: FontWeight.bold ),
+                                  maxLines: 1,overflow: TextOverflow.ellipsis,
+                                ),
+                              ],
+                            ),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(15)),
+                          );
+                        }
                     ),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15)),
-                  );
-                }
+                  ],
                 ),
-                 /* SizedBox(height: 25.0,),
-                  Container(
-                    width: double.infinity,
-                    child: MaterialButton(
-                      child: Text('LOGIN OUT ',style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold,color: Colors.red),),
-                    onPressed:(){} ,
-                    ),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15)
-                    ),
-                  ),*/
-
-                ],
               ),
+            ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: (){
+                navigateToPage(context,ProfileScreen(),);
+                print("home page");
+              },
+              child: Icon(Icons.settings),
             ),
           );
         }
