@@ -72,6 +72,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             floatingActionButton: FloatingActionButton(
+              heroTag: "btn3",
               onPressed: (){
                 navigateToPage(context,ProfileScreen(),);
                 print("home page");

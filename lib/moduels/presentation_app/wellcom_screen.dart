@@ -1,4 +1,4 @@
-import 'package:fam_tam/moduels/presentation_app/register_screen.dart';
+import 'package:fam_tam/moduels/presentation_app/login_screen/register_screen.dart';
 import 'package:flutter/material.dart';
 class WelcomeScreen extends StatelessWidget {
 

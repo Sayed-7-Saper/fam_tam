@@ -131,6 +131,7 @@ class _StatusScreenState extends State<StatusScreen> {
                 Container(height: 48,
                   child: FloatingActionButton(
                     elevation: 8,
+                    heroTag: "btn1",
                     backgroundColor: Colors.blueGrey[100],
                     onPressed: (){print("Add Coument");},
                     child: Icon(Icons.edit_sharp,color: Colors.blueGrey[900],),
@@ -139,6 +140,7 @@ class _StatusScreenState extends State<StatusScreen> {
                 SizedBox(height: 13,),
                 FloatingActionButton(
                   elevation: 5,
+                  heroTag: "btn2",
                   onPressed: (){
                     getImage();
                   print("ttttttttt");},

@@ -42,7 +42,7 @@ dependencies:
   animated_text_kit: ^4.2.1
   otp_text_field: ^1.1.1
   country_pickers: ^2.0.0
-  image_picker: ^0.7.0
+  image_picker: ^0.7.2+1
   path: ^1.8.0
 
 

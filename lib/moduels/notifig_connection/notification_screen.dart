@@ -108,6 +108,7 @@ class NotificationScreen extends StatelessWidget {
 
       ),
       floatingActionButton: FloatingActionButton(
+        heroTag: "btn4",
         onPressed: (){
           navigateToPage(context ,UploadDataForLosePerson(), );
           print("Notification page");

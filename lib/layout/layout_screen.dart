@@ -86,19 +86,12 @@ class LayoutPage extends StatelessWidget {
 
               elevation: 0.0,
               title: cubit.isSearching ?cubit.buildSearchField():buildAppBarTitle(),
-              //Text('Fam_Tam',style: TextStyle(fontSize: 25.0,fontWeight: FontWeight.bold),),
+
               actions: cubit.buildAppBarAction(),
-             /* [*/
-             /*   IconButton(icon: Icon(Icons.search_sharp), onPressed: (){}),*/
-             /*   IconButton(icon: Icon(Icons.more_vert_sharp), onPressed: (){}),*/
-             /* ],*/
+
             ),
             body: cubit.bottomScreens[cubit.currentIndex],
-            // floatingActionButton: FloatingActionButton(
-            //   onPressed:(){ cubit.funcChangeOnprees(cubit.currentIndex);},
-            //   tooltip: 'Add Story',
-            //   child: Icon(cubit.changeIcon(cubit.currentIndex)),
-            // ),
+
             bottomNavigationBar: BottomNavigationBar(
               currentIndex: cubit.currentIndex,
               onTap:(index) {
@@ -108,10 +101,8 @@ class LayoutPage extends StatelessWidget {
               type: BottomNavigationBarType.fixed,
               items: [
                 BottomNavigationBarItem(icon: Icon(Icons.home_sharp,),label: 'Home'),
-                BottomNavigationBarItem(icon: Icon(Icons.chat,),label: 'Chats'),
                 BottomNavigationBarItem(icon: Icon(Icons.all_inclusive_sharp,),label: 'Status'),
                 BottomNavigationBarItem(icon: Icon(Icons.add_alert_sharp,),label: 'Notifications'),
-                BottomNavigationBarItem(icon: Icon(Icons.add_ic_call_sharp,),label: 'Call'),
               ],
 
 
