@@ -44,6 +44,8 @@ dependencies:
   country_pickers: ^2.0.0
   image_picker: ^0.7.2+1
   path: ^1.8.0
+  http: ^0.13.4
+
 
 
 

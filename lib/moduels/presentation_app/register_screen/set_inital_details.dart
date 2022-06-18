@@ -25,14 +25,20 @@ class _SetInitialProfileDetailsState extends State<SetInitialProfileDetails> {
   var _formKey = GlobalKey<FormState>();
   //GlobalKey<FormState> _abcKey = GlobalKey<FormState>();
   var userFirstNameController =TextEditingController();
+  String f_Name ="";
   var userSecondNameController =TextEditingController();
+  String s_name="";
   var dateBirtheController = TextEditingController();
   Gender gender =Gender.male;
   int agePerson;
+//  String agePerson;
+  String typePerson ="";
 
   @override
   void dispose() {
     _nameController.dispose();
+    userFirstNameController.dispose();
+    userSecondNameController.dispose();
     super.dispose();
   }
   @override
@@ -43,13 +49,13 @@ class _SetInitialProfileDetailsState extends State<SetInitialProfileDetails> {
           listener: (context, state){
             if(state is RegisterSuccessState)
             {
-              if(state.registerModel.data.data_status){
+              if(state.registerModel.data_status){
+                showToast(text: "Thanks for entering the data", state: ToastStates.SUCCESS);
                 navigateAndFinishPage(context, LayoutPage(), );
               }
               else{
-                showToast(text: state.registerModel.message, state: ToastStates.ERROR);
+                showToast(text: "Error pleas check  your data", state: ToastStates.ERROR);
               }
-
 
             }
 
@@ -95,13 +101,16 @@ class _SetInitialProfileDetailsState extends State<SetInitialProfileDetails> {
                             ),
                             defaultTextFormField(
                               controller: userFirstNameController,
+                              onChanged: (value){
+                                f_Name = value.toString();
+                              },
                               type: TextInputType.name,
                               validate: (String value) {
                                 if (value.isEmpty) {
                                   return 'please enter your first name';
                                 }
                               },
-                              label: 'User Name',
+                              label: ' First User Name',
                               hintText: 'Enter Your First Name',
                               prefix: Icons.person,
                             ),
@@ -109,15 +118,18 @@ class _SetInitialProfileDetailsState extends State<SetInitialProfileDetails> {
 
                             defaultTextFormField(
                               controller: userSecondNameController,
+                              onChanged: (value){
+                                s_name = value.toString();
+                              },
                               type: TextInputType.name,
                               validate: (String value) {
                                 if (value.isEmpty) {
                                   return 'please enter your second name';
                                 }
                               },
-                              label: 'User Name',
+                              label: 'Second User Name',
                               hintText: 'Enter Your Second Name ',
-                              prefix: Icons.email_outlined,
+                              prefix: Icons.people_alt_sharp,
                             ),
                             SizedBox(
                               height: 30.0,
@@ -181,6 +193,7 @@ class _SetInitialProfileDetailsState extends State<SetInitialProfileDetails> {
                                   {
                                     setState(() {
                                       this.gender = value;
+                                      typePerson = "male";
                                     });
                                   },
                                 ),
@@ -194,6 +207,7 @@ class _SetInitialProfileDetailsState extends State<SetInitialProfileDetails> {
                                   {
                                     setState(() {
                                       this.gender = value;
+                                      typePerson ="female";
                                     });
                                   },
                                 ),
@@ -212,24 +226,29 @@ class _SetInitialProfileDetailsState extends State<SetInitialProfileDetails> {
                               condition: state is! RegisterLoadingState,
                               builder: (context){
                                 return defaultButton(
-                                  function: () {
+                                  function: () async{
                                     if (_formKey.currentState.validate())
                                     {
-                                      RegisterCubit.get(context).userRegister(
+                                      print(typePerson);
+                                     await RegisterCubit.get(context).userRegister(
                                         token: widget.token,
-                                        first_name: userFirstNameController.text,
-                                          last_name: userSecondNameController.text,
-                                          age: agePerson,// dateBirtheController.text,
-                                          gender: gender.toString(),
+                                        first_name: f_Name, //userFirstNameController.text,
+                                          last_name: s_name ,//userSecondNameController.text,
+                                          age: agePerson.toString(), // agePerson.toString(),// dateBirtheController.text,
+                                          gender:  gender == Gender.male?"male" : "female", //typePerson ,//gender.toString(),
                                       );
                                       //////
                                      // navigateAndFinishPage(context, LayoutPage(), );
                                       ////
-
                                     }
                                   },
                                   text: 'Done',
                                   isUpperCase: true,
+                                );
+                              },
+                              fallback: (context){
+                                return Center(
+                                  child: CircularProgressIndicator(),
                                 );
                               },
                             ),

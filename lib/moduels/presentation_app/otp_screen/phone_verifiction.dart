@@ -34,7 +34,8 @@ class _phoneVerificationPageState extends State<phoneVerificationPage> {
             if(state is OtpLoginSuccessState)
             {
               if(state.loginModel.code_status ){
-                showToast(text: state.loginModel.message, state: ToastStates.SUCCESS);
+                //             state.loginModel.message  = null
+                showToast(text: "success... Wellcom" , state: ToastStates.SUCCESS);
                 CacheHelper.saveData(
                     key: "token",
                     value: state.loginModel.token).
@@ -48,31 +49,10 @@ class _phoneVerificationPageState extends State<phoneVerificationPage> {
                   }
                 });
 
-                // if(widget.staus_person){
-                //   CacheHelper.saveData(
-                //       key: "token",
-                //       value: state.loginModel.token).
-                //   then((value) {
-                //     token = state.loginModel.token;
-                //     //navigateAndFinish
-                //     navigateAndFinishPage(context, SetInitialProfileDetails(), );
-                //   });
-                // }else{
-                //   CacheHelper.saveData(
-                //           key: "token",
-                //           value: state.loginModel.token).
-                //       then((value) {
-                //         token = state.loginModel.token;
-                //         //navigateAndFinish
-                //         navigateAndFinishPage(context, LayoutPage(), );
-                //       });
-                // }
-
-
               }
               else{
                 print(state.loginModel.message);
-                showToast(text: state.loginModel.message, state: ToastStates.ERROR);
+                showToast(text: " Error in  otp", state: ToastStates.ERROR);
 
               }
 
@@ -143,7 +123,7 @@ class _phoneVerificationPageState extends State<phoneVerificationPage> {
                           textFieldAlignment: MainAxisAlignment.spaceAround,
                           fieldStyle: FieldStyle.box,//   FieldStyle.underline,
                           onCompleted: (pin) {
-                            widget.OtpPassword = pin ;
+                            widget.OtpPassword = pin.toString();//int.parse(pin)  ;
                             showDialog(
                                 context: context,
                                 builder: (context){
@@ -157,7 +137,7 @@ class _phoneVerificationPageState extends State<phoneVerificationPage> {
                             print("Completed: " + pin);
                           },
                           onChanged: (pass){
-
+                            widget.OtpPassword = pass.toString();
                           },
 
                         ),
@@ -178,12 +158,13 @@ class _phoneVerificationPageState extends State<phoneVerificationPage> {
                               builder: (context){
                                 return  MaterialButton(
                                   color: Colors.blue,
-                                  onPressed: (){
+                                  onPressed: ()async{
                                     if(widget.OtpPassword != null){
-                                      print ("Otp :" + widget.OtpPassword);
-                                      OtpLoginCubit.get(context).userLogin(
-                                          phoneNumber: widget.phoneNumber,
-                                          code: widget.OtpPassword);
+                                      print ("Otp :" + widget.OtpPassword.toString());
+                                    await  OtpLoginCubit.get(context).userLogin(
+                                          phoneNumber: widget.phoneNumber.toString(),
+                                          code: widget.OtpPassword.toString(),
+                                    );
                                       /////////////////////
                                      // navigateAndFinishPage(context, SetInitialProfileDetails(), );
                                       ////////////////////

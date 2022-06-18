@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
    static init() {
      dio = Dio(
        BaseOptions(
-         baseUrl: 'http://147.182.240.32:8000/' ,  //'https://famtam.herokuapp.com/',
+         // http://142.93.115.216/
+         baseUrl: 'http://142.93.115.216/',//'http://147.182.240.32:8000/' ,  //'https://famtam.herokuapp.com/',
          receiveDataWhenStatusError: true,
          followRedirects: false,
          validateStatus: (status) => true,
@@ -19,15 +20,19 @@ import 'package:flutter/material.dart';
      String lang = "ar",
      String token,
    }) async {
-     dio.options.headers = {
-       "Content-Type": "application/json",
-       "lang": lang,
-     'Authorization': token ?? '',
-     };
-     return dio.get(
-         url,
-         queryParameters: query
-     );
+     try{
+       dio.options.headers = {
+         "Content-Type": "application/json",
+         "lang": lang,
+         'Authorization': token ?? '',
+       };
+       return dio.get(
+           url,
+           queryParameters: query
+       );
+     } catch (e) {
+     print('${e.toString()}');
+     }
    }
 
    static Future <Response> postData({
@@ -37,17 +42,22 @@ import 'package:flutter/material.dart';
      String lang = "ar",
      String token,
    }) async {
-     dio.options.headers = {
-       "Content-Type": "application/json",
-        'lang': lang,
-       "Authorization":"Token ${token ?? '' }" ,
-       // 'Authorization': token ?? '',
-     };
-     return dio.post(
-       url,
-       queryParameters: query,
-       data: data,
-     );
+     try{
+       dio.options.headers = {
+         "Content-Type": "application/json",
+         'lang': lang,
+         "Authorization":"Token ${token ?? '' }" ,
+         // 'Authorization': token ?? '',
+       };
+       return dio.post(
+         url,
+         queryParameters: query,
+         data: data,
+       );
+     }catch (e) {
+       print('${e.toString()}');
+     }
+
    }
 
    static Future <Response> putData({
@@ -57,21 +67,23 @@ import 'package:flutter/material.dart';
      String lang = "ar",
      String token,
    }) async {
-     dio.options.headers = {
-       "Content-Type": "application/json",
-       'lang': lang,
-       "Authorization":"Token ${token ?? '' }" ,
-      // 'Authorization': token ?? '',
+     try{
+       dio.options.headers = {
+         "Content-Type": "application/json",
+         'lang': lang,
+         "Authorization":"Token ${token ?? '' }" ,
+         // 'Authorization': token ?? '',
+       };
+       return dio.put(
+         url,
+         queryParameters: query,
+         data: data,
+       );
+     }catch (e) {
+       print('${e.toString()}');
+     }
 
-
-     };
-     return dio.put(
-       url,
-       queryParameters: query,
-       data: data,
-     );
    }
-
  }
 
 

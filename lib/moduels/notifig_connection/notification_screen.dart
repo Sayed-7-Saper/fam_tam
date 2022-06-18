@@ -2,7 +2,7 @@ import 'package:fam_tam/model/notifcation_model/character_cubit.dart';
 import 'package:fam_tam/model/notifcation_model/character_model.dart';
 import 'package:fam_tam/model/notifcation_model/character_state.dart';
 import 'package:fam_tam/moduels/notifig_connection/charachter_detailesScreen.dart';
-import 'package:fam_tam/moduels/notifig_connection/upload_image_page.dart';
+import 'package:fam_tam/moduels/notifig_connection/upLoadImage_folder/upload_image_page.dart';
 import 'package:fam_tam/share/compontent/compontents.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 // import 'package:fam_tam/layout/cubit/cubit1.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_offline/flutter_offline.dart';
-
 
 class NotificationScreen extends StatelessWidget {
   List<Character> allCharacter;
@@ -111,7 +110,7 @@ class NotificationScreen extends StatelessWidget {
         heroTag: "btn4",
         onPressed: (){
           navigateToPage(context ,UploadDataForLosePerson(), );
-          print("Notification page");
+          // print("Notification page");
         },
         child: Icon(Icons.add_to_photos_rounded),
       ),

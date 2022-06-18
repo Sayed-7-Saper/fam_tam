@@ -1,2 +1,2 @@
 String token = '';
-bool statusPerson = true;
+ bool statusPerson = true;

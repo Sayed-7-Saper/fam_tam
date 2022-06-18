@@ -49,7 +49,7 @@ Widget defaultTextFormField({
   @required TextEditingController controller,
   @required TextInputType type,
   Function onSubmit,
-  Function onChange,
+  Function onChanged,
   Function onTap,
   bool isPassword = false,
   @required Function validate,
@@ -70,7 +70,7 @@ Widget defaultTextFormField({
         obscureText: isPassword,
         enabled: isClickable,
         onFieldSubmitted: onSubmit,
-        onChanged: onChange,
+        onChanged: onChanged,
         onTap: onTap,
         validator: validate,
         decoration: InputDecoration(

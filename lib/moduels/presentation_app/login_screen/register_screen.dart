@@ -11,7 +11,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class RegisterScreen extends StatefulWidget {
 
   @override
@@ -22,9 +21,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
    static Country _selectedFilteredCountryPickerDialog = CountryPickerUtils.getCountryByPhoneCode ("20");
    String _countryCode = _selectedFilteredCountryPickerDialog.phoneCode;
    TextEditingController controllerPhone =TextEditingController();
+   String _phoneNumber="";
    var formKey =GlobalKey<FormState>();
-   var x;
-   //String _phoneNumber="";
+
    @override
   void dispose() {
     // TODO: implement dispose
@@ -40,25 +39,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
         listener: (context, state) {
           if(state is LoginSuccessState)
           {
+
             if(!state.loginModel.status){
-          showToast(text: state.loginModel.message, state: ToastStates.SUCCESS);
+          showToast(text: state.loginModel.message, state: ToastStates.WARNING);
             CacheHelper.saveData(
                 key: "statusPerson",//   status
                 value: state.loginModel.status).
             then((value) {
               statusPerson = state.loginModel.status;
-              navigateAndFinishPage(context, phoneVerificationPage(phoneNumber:controllerPhone.text  ,status_person: statusPerson,));
+              navigateAndFinishPage(context, phoneVerificationPage(phoneNumber:_phoneNumber //int.parse(controllerPhone.text)
+                ,status_person: statusPerson,));
 
             });
             }
             else {
-              showToast(text: state.loginModel.message, state: ToastStates.WARNING);
+              showToast(text: state.loginModel.message, state: ToastStates.SUCCESS);
               CacheHelper.saveData(
                   key: "statusPerson", //   status
                   value: state.loginModel.status).
               then((value) {
                 statusPerson = state.loginModel.status;
-                navigateAndFinishPage(context, phoneVerificationPage(phoneNumber:controllerPhone.text  ,status_person: statusPerson,));
+                navigateAndFinishPage(context, phoneVerificationPage(phoneNumber: _phoneNumber//int.parse(controllerPhone.text)
+                  ,status_person: statusPerson,));
 
               });
 
@@ -120,6 +122,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           child: Container(
                             height: 40,
                             child: TextFormField(
+                              onChanged: (value){
+                                _phoneNumber = value.toString();
+                              },
                               controller: controllerPhone,
                               keyboardType:TextInputType.phone ,
                               decoration: InputDecoration(
@@ -146,19 +151,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           builder: (context){
                             return MaterialButton(
                               color: Colors.blue,
-                              onPressed:  (){
+                              onPressed:  ()async{
                                 print(controllerPhone.text);
                                 if(formKey.currentState.validate()){
-                                  LoginCubit.get(context).userLogin
+                                  await LoginCubit.get(context).userLogin
                                     (
-                                     // phoneNumber:int.parse(controllerPhone.text) ,
-                                    phoneNumber: controllerPhone.text,
+                                    phoneNumber: _phoneNumber,
                                   );
-                                  ///////
-                                 // navigateAndFinishPage(context, phoneVerificationPage(phoneNumber:controllerPhone.text ,));
-                                  //////
-                                  // x=int.parse(controllerPhone.text) ;
-                                  // print("XXXXXXXX:   ${x.runtimeType}");
                                 }
 
                               }, // _submitVerifyPhoneNumber

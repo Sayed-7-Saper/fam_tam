@@ -1,5 +1,5 @@
-
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 class CharacterWebServices {
   Dio dio;
 
@@ -23,4 +23,29 @@ class CharacterWebServices {
       print('${e.toString()}');
     }
   }
+  // static Future <Response> postData({
+  //   @required String url,
+  //   @required Map<String, dynamic> data,
+  //   Map<String, dynamic>query,
+  //   String lang = "ar",
+  //   String token,
+  // }) async {
+  //   try{
+  //     dio.options.headers = {
+  //       "Content-Type": "application/json",
+  //       'lang': lang,
+  //       "Authorization":"Token ${token ?? '' }" ,
+  //       // 'Authorization': token ?? '',
+  //     };
+  //     return dio.post(
+  //       url,
+  //       queryParameters: query,
+  //       data: data,
+  //     );
+  //   }catch (e) {
+  //     print('${e.toString()}');
+  //   }
+  //
+  // }
+
 }

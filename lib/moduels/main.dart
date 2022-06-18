@@ -5,6 +5,7 @@ import 'package:fam_tam/layout/layout_screen.dart';
 import 'package:fam_tam/model/notifcation_model/cashHelper_repositry.dart';
 import 'package:fam_tam/model/notifcation_model/character_cubit.dart';
 import 'package:fam_tam/model/notifcation_model/dioHelper_webServes.dart';
+import 'package:fam_tam/moduels/presentation_app/register_screen/set_inital_details.dart';
 //import 'package:fam_tam/moduels/presentation_app/login_screen/register_screen.dart';
 import 'package:fam_tam/moduels/presentation_app/wellcom_screen.dart';
 import 'package:fam_tam/share/blocObserver.dart';
@@ -19,13 +20,19 @@ void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   // used  bloc to  keep state screen  and tranport between layout
   Bloc.observer = MyBlocObserver();
-  await DioHelper.init(); //
+   DioHelper.init(); //
   await CacheHelper.init();
   token = CacheHelper.getData(key: 'token');
-  //statusPerson = CacheHelper.getData(key: 'statusPerson');
+  statusPerson = CacheHelper.getData(key: 'statusPerson'); //
   Widget widget ;
   if(token != null ){
     widget = LayoutPage();
+    // if(!statusPerson){//
+    //   widget = LayoutPage();
+    //  }else{//
+    //   widget= SetInitialProfileDetails(token: token,);//
+    //  }//
+
   }else{
     widget = WelcomeScreen();
   }
